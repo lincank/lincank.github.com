@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Unittest | Guimin's Blog]]></title>
-  <link href="http://lincank.github.com/blog/categories/unittest/atom.xml" rel="self"/>
-  <link href="http://lincank.github.com/"/>
-  <updated>2012-04-20T21:35:21+08:00</updated>
-  <id>http://lincank.github.com/</id>
+  <link href="/blog/categories/unittest/atom.xml" rel="self"/>
+  <link href="/"/>
+  <updated>2012-04-20T23:04:41+08:00</updated>
+  <id>/</id>
   <author>
     <name><![CDATA[Guimin Lin/林桂民]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Django开发测试]]></title>
-    <link href="http://lincank.github.com/blog/2012/04/19/djangokai-fa-ce-shi/"/>
+    <link href="/blog/2012/04/19/djangokai-fa-ce-shi/"/>
     <updated>2012-04-19T18:06:00+08:00</updated>
-    <id>http://lincank.github.com/blog/2012/04/19/djangokai-fa-ce-shi</id>
+    <id>/blog/2012/04/19/djangokai-fa-ce-shi</id>
     <content type="html"><![CDATA[<p>测试的重要性不再赘述, 我们的系统每个模块都要有单元测试. 另一方面要确保自己写的测试代码尽可能地简单有效, 能达到目的就好. 要确保自己写的测试代码没有Bug!</p>
 
 <h2>Python单元测试框架</h2>
