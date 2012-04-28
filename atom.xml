@@ -4,7 +4,7 @@
   <title><![CDATA[Guimin's Blog]]></title>
   <link href="/atom.xml" rel="self"/>
   <link href="/"/>
-  <updated>2012-04-28T00:15:06+08:00</updated>
+  <updated>2012-04-28T11:40:46+08:00</updated>
   <id>/</id>
   <author>
     <name><![CDATA[Guimin Lin/林桂民]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[tomcat No Class Error]]></title>
+    <link href="/blog/2012/04/28/tomcat-no-class-error/"/>
+    <updated>2012-04-28T11:37:00+08:00</updated>
+    <id>/blog/2012/04/28/tomcat-no-class-error</id>
+    <content type="html"><![CDATA[<p>If you have the same problem in deploying your webapp with ant, in Tomcat 7. Then copy the following jars to your lib directory of ant:</p>
+
+<pre><code>catalina-ant.jar
+tomcat-coyote.jar
+tomcat-util.jar
+tomcat-juli.jar
+</code></pre>
+
+<p>That&#8217;s it! You will be fine:)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Django开发测试]]></title>

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Django - Guimin's Blog</title>
+  <title>tomcat No Class Error - Guimin's Blog</title>
   <meta name="author" content="Guimin Lin/林桂民">
 
   
-  <meta name="description" content="Category: Django">
+  <meta name="description" content="If you have the same problem in deploying your webapp with ant, in Tomcat 7. Then copy the following jars to your lib directory of ant: catalina-ant. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="blog/categories/django">
+  <link rel="canonical" href="/blog/2012/04/28/tomcat-no-class-error">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -77,36 +77,99 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Django</h1>
+    
+      <h1 class="entry-title">Tomcat No Class Error</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-28T11:37:00+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>If you have the same problem in deploying your webapp with ant, in Tomcat 7. Then copy the following jars to your lib directory of ant:</p>
 
-  
-  <h2>2012</h2>
+<pre><code>catalina-ant.jar
+tomcat-coyote.jar
+tomcat-util.jar
+tomcat-juli.jar
+</code></pre>
 
-<article>
-  
-<h1><a href="/blog/2012/04/19/djangokai-fa-ce-shi/">Django开发测试</a></h1>
-<time datetime="2012-04-19T18:06:00+08:00" pubdate><span class='month'>Apr</span> <span class='day'>19</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/django/'>Django</a>, <a class='category' href='/blog/categories/python/'>Python</a>, <a class='category' href='/blog/categories/unittest/'>Unittest</a></span>
-</footer>
-
-
-</article>
-
+<p>That&#8217;s it! You will be fine:)</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Guimin Lin/林桂民</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-28T11:37:00+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="/blog/2012/04/28/tomcat-no-class-error/" data-via="lincank" data-counturl="/blog/2012/04/28/tomcat-no-class-error/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/04/19/djangokai-fa-ce-shi/" title="Previous Post: Django开发测试">&laquo; Django开发测试</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -175,7 +238,10 @@
       var disqus_shortname = 'cktechblog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = '/blog/2012/04/28/tomcat-no-class-error/';
+        var disqus_url = '/blog/2012/04/28/tomcat-no-class-error/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -9,7 +9,7 @@
   <meta name="author" content="Guimin Lin/林桂民">
 
   
-  <meta name="description" content="测试的重要性不再赘述, 我们的系统每个模块都要有单元测试. 另一方面要确保自己写的测试代码尽可能地简单有效, 能达到目的就好. 要确保自己写的测试代码没有Bug! Python单元测试框架 Python单元测试框架: 简称为PyUnit, 是JUnit的Python版本. &hellip;">
+  <meta name="description" content="If you have the same problem in deploying your webapp with ant, in Tomcat 7. Then copy the following jars to your lib directory of ant: catalina-ant. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,52 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/04/28/tomcat-no-class-error/">Tomcat No Class Error</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-28T11:37:00+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/04/28/tomcat-no-class-error/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you have the same problem in deploying your webapp with ant, in Tomcat 7. Then copy the following jars to your lib directory of ant:</p>
+
+<pre><code>catalina-ant.jar
+tomcat-coyote.jar
+tomcat-util.jar
+tomcat-juli.jar
+</code></pre>
+
+<p>That&#8217;s it! You will be fine:)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/04/19/djangokai-fa-ce-shi/">Django开发测试</a></h1>
     
     
@@ -144,6 +190,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/04/28/tomcat-no-class-error/">tomcat No Class Error</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/04/19/djangokai-fa-ce-shi/">Django开发测试</a>
