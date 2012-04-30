@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>/blog/2012/04/19/djangokai-fa-ce-shi/</loc>
+        <loc>http://tech.lincank.info/blog/2012/04/19/djangokai-fa-ce-shi/</loc>
         <lastmod>2012-04-19T18:15:05+08:00</lastmod>
     </url>
     <url>
-        <loc>/blog/2012/04/28/tomcat-no-class-error/</loc>
+        <loc>http://tech.lincank.info/blog/2012/04/28/tomcat-no-class-error/</loc>
         <lastmod>2012-04-28T11:38:55+08:00</lastmod>
     </url>
     <url>
-        <loc>/about/</loc>
+        <loc>http://tech.lincank.info/about/</loc>
         <lastmod>2012-04-20T21:33:45+08:00</lastmod>
     </url>
     <url>
-        <loc>/blog/archives/</loc>
+        <loc>http://tech.lincank.info/blog/archives/</loc>
         <lastmod>2012-04-28T11:38:55+08:00</lastmod>
     </url>
     <url>
-        <loc>/</loc>
+        <loc>http://tech.lincank.info/</loc>
         <lastmod>2012-04-28T11:38:55+08:00</lastmod>
     </url>
 </urlset>
