@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | Guimin's Blog]]></title>
   <link href="http://tech.lincank.info/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://tech.lincank.info/"/>
-  <updated>2013-04-08T23:50:29+08:00</updated>
+  <updated>2013-04-09T00:26:00+08:00</updated>
   <id>http://tech.lincank.info/</id>
   <author>
     <name><![CDATA[Guimin Lin/林桂民]]></name>
@@ -24,6 +24,8 @@
 
 
 <p>Use <code>IO.binread</code> instead of <code>IO.read</code>, and it just works! Here is the sample code:</p>
+
+<p>```ruby Zip With Rubyzip On The Fly</p>
 
 <pre><code>require 'zip/zip'
 require 'zip/zipfilesystem'
@@ -45,6 +47,8 @@ send_file t.path, :type =&gt; 'application/zip', :disposition =&gt; 'attachment'
 # The temp file will be deleted some time...
 t.close
 </code></pre>
+
+<p>```</p>
 ]]></content>
   </entry>
   

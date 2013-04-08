@@ -115,26 +115,48 @@
 
 <p>Use <code>IO.binread</code> instead of <code>IO.read</code>, and it just works! Here is the sample code:</p>
 
-<pre><code>require 'zip/zip'
-require 'zip/zipfilesystem'
+<figure class='code'><figcaption><span>Zip With Rubyzip On The Fly</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'> <span class="nb">require</span> <span class="s1">&#39;zip/zip&#39;</span>
+</span><span class='line'>  <span class="nb">require</span> <span class="s1">&#39;zip/zipfilesystem&#39;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">t</span> <span class="o">=</span> <span class="no">Tempfile</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;some-weird-temp-file-basename-</span><span class="si">#{</span><span class="n">request</span><span class="o">.</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># Give the path of the temp file to the zip outputstream, it won&#39;t try to open it as an archive.</span>
+</span><span class='line'>  <span class="no">Zip</span><span class="o">::</span><span class="no">ZipOutputStream</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">zos</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">some_file_list</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+</span><span class='line'>          <span class="c1"># Create a new entry with some arbitrary name</span>
+</span><span class='line'>          <span class="n">zos</span><span class="o">.</span><span class="n">put_next_entry</span><span class="p">(</span><span class="s2">&quot;some-funny-name.jpg&quot;</span><span class="p">)</span>
+</span><span class='line'>          <span class="c1"># Add the contents of the file, don&#39;t read the stuff linewise if its binary, instead use direct IO</span>
+</span><span class='line'>          <span class="c1"># use IO.binread instead of IO.read, and it just works!</span>
+</span><span class='line'>          <span class="n">zos</span><span class="o">.</span><span class="n">print</span> <span class="no">IO</span><span class="o">.</span><span class="n">binread</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="c1"># End of the block  automatically closes the file.</span>
+</span><span class='line'>  <span class="c1"># Send it using the right mime type, with a download window and some nice file name.</span>
+</span><span class='line'>  <span class="n">send_file</span> <span class="n">t</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">&#39;application/zip&#39;</span><span class="p">,</span> <span class="ss">:disposition</span> <span class="o">=&gt;</span> <span class="s1">&#39;attachment&#39;</span><span class="p">,</span> <span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="s2">&quot;some-brilliant-file-name.zip&quot;</span>
+</span><span class='line'>  <span class="c1"># The temp file will be deleted some time...</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">close</span>
+</span><span class='line'>  
+</span></code></pre></td></tr></table></div></figure>
 
-t = Tempfile.new("some-weird-temp-file-basename-#{request.remote_ip}")
-# Give the path of the temp file to the zip outputstream, it won't try to open it as an archive.
-Zip::ZipOutputStream.open(t.path) do |zos|
-    some_file_list.each do |file|
-        # Create a new entry with some arbitrary name
-        zos.put_next_entry("some-funny-name.jpg")
-        # Add the contents of the file, don't read the stuff linewise if its binary, instead use direct IO
-        # use IO.binread instead of IO.read, and it just works!
-        zos.print IO.binread(file.path)
-    end
-end
-# End of the block  automatically closes the file.
-# Send it using the right mime type, with a download window and some nice file name.
-send_file t.path, :type =&gt; 'application/zip', :disposition =&gt; 'attachment', :filename =&gt; "some-brilliant-file-name.zip"
-# The temp file will be deleted some time...
-t.close
-</code></pre>
 </div>
 
 
