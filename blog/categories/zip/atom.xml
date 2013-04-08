@@ -4,7 +4,7 @@
   <title><![CDATA[Category: zip | Guimin's Blog]]></title>
   <link href="http://tech.lincank.info/blog/categories/zip/atom.xml" rel="self"/>
   <link href="http://tech.lincank.info/"/>
-  <updated>2013-04-08T23:47:25+08:00</updated>
+  <updated>2013-04-08T23:50:29+08:00</updated>
   <id>http://tech.lincank.info/</id>
   <author>
     <name><![CDATA[Guimin Lin/林桂民]]></name>
@@ -18,7 +18,10 @@
     <link href="http://tech.lincank.info/blog/2013/04/08/create-zip-file-on-the-fly-with-rubyzip/"/>
     <updated>2013-04-08T23:13:00+08:00</updated>
     <id>http://tech.lincank.info/blog/2013/04/08/create-zip-file-on-the-fly-with-rubyzip</id>
-    <content type="html"><![CDATA[<p>I tries to create zip file with multiple files in it, on the fly of course. I refered to <a href="http://info.michael-simons.eu/2008/01/21/using-rubyzip-to-create-zip-files-on-the-fly/">this post</a>, but it does not work for me. I search and try for hours, and figure out one solution:</p>
+    <content type="html"><![CDATA[<p>I tries to create zip file with multiple files in it, on the fly of course. I refered to <a href="http://info.michael-simons.eu/2008/01/21/using-rubyzip-to-create-zip-files-on-the-fly/">this post</a>, but it does not work for me. I search and try for hours, and figure out one solution.</p>
+
+<!-- more -->
+
 
 <p>Use <code>IO.binread</code> instead of <code>IO.read</code>, and it just works! Here is the sample code:</p>
 
