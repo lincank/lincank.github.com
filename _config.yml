@@ -2,9 +2,9 @@
 #      Main Configs       #
 # ----------------------- #
 
-kurl: http://lincank.github.com
+url: http://tech.lincank.info
 title: Guimin's Blog
-subtitle: Life, Thinking, Code
+subtitle: Thinking in Code
 author: Guimin Lin/林桂民
 simple_search: http://google.com/search
 description:
