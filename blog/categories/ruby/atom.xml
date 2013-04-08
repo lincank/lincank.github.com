@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Guimin's Blog]]></title>
-  <link href="http://tech.lincank.info/atom.xml" rel="self"/>
+  <title><![CDATA[Category: ruby | Guimin's Blog]]></title>
+  <link href="http://tech.lincank.info/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://tech.lincank.info/"/>
   <updated>2013-04-08T23:47:25+08:00</updated>
   <id>http://tech.lincank.info/</id>
@@ -42,48 +42,6 @@ send_file t.path, :type =&gt; 'application/zip', :disposition =&gt; 'attachment'
 # The temp file will be deleted some time...
 t.close
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[tomcat No Class Error]]></title>
-    <link href="http://tech.lincank.info/blog/2012/04/28/tomcat-no-class-error/"/>
-    <updated>2012-04-28T11:37:00+08:00</updated>
-    <id>http://tech.lincank.info/blog/2012/04/28/tomcat-no-class-error</id>
-    <content type="html"><![CDATA[<p>If you have the same problem in deploying your webapp with ant, in Tomcat 7. Then copy the following jars to your lib directory of ant:</p>
-
-<pre><code>catalina-ant.jar
-tomcat-coyote.jar
-tomcat-util.jar
-tomcat-juli.jar
-</code></pre>
-
-<p>That&#8217;s it! You will be fine:)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Django开发测试]]></title>
-    <link href="http://tech.lincank.info/blog/2012/04/19/djangokai-fa-ce-shi/"/>
-    <updated>2012-04-19T18:06:00+08:00</updated>
-    <id>http://tech.lincank.info/blog/2012/04/19/djangokai-fa-ce-shi</id>
-    <content type="html"><![CDATA[<p>测试的重要性不再赘述, 我们的系统每个模块都要有单元测试. 另一方面要确保自己写的测试代码尽可能地简单有效, 能达到目的就好. 要确保自己写的测试代码没有Bug!</p>
-
-<h2>Python单元测试框架</h2>
-
-<p><a href="http://pyunit.sourceforge.net/pyunit_cn.html">Python单元测试框架</a>: 简称为PyUnit, 是JUnit的Python版本. 我们的项目代码请按照这个测试框架编写.</p>
-
-<h2>浏览器脚本测试</h2>
-
-<p><a href="https://addons.mozilla.org/en-US/firefox/addon/imacros-for-firefox/">iMacros</a>: 有FireFox版及Chrome版, 可以记录浏览器里的鼠标及键盘行为, 在浏览器实现自动测试.</p>
-
-<h2>JavaScript调试</h2>
-
-<ul>
-<li>FireFox: FireBug</li>
-<li>Chrome: 内置有调试器</li>
-</ul>
-
 ]]></content>
   </entry>
   
