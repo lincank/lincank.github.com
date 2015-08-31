@@ -8,11 +8,12 @@ categories: ruby zip
 
 I tries to create zip file with multiple files in it, on the fly of course. I refered to [this post](http://info.michael-simons.eu/2008/01/21/using-rubyzip-to-create-zip-files-on-the-fly/), but it does not work for me. I search and try for hours, and figure out one solution.
 
+
 <!-- more -->
 
 Use `IO.binread` instead of `IO.read`, and it just works! Here is the sample code:
 
-
+```ruby Zip With Rubyzip On The Fly
 
 	require 'zip/zip'
 	require 'zip/zipfilesystem'
@@ -33,3 +34,5 @@ Use `IO.binread` instead of `IO.read`, and it just works! Here is the sample cod
 	send_file t.path, :type => 'application/zip', :disposition => 'attachment', :filename => "some-brilliant-file-name.zip"
 	# The temp file will be deleted some time...
 	t.close
+	
+```
