@@ -4,7 +4,7 @@
   <title><![CDATA[Guimin's Blog]]></title>
   <link href="http://tech.lincank.info/atom.xml" rel="self"/>
   <link href="http://tech.lincank.info/"/>
-  <updated>2013-04-09T00:26:00+08:00</updated>
+  <updated>2015-08-31T22:01:11+08:00</updated>
   <id>http://tech.lincank.info/</id>
   <author>
     <name><![CDATA[Guimin Lin/林桂民]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Your Ghost]]></title>
+    <link href="http://tech.lincank.info/blog/2015/08/31/setup-your-ghost/"/>
+    <updated>2015-08-31T21:45:00+08:00</updated>
+    <id>http://tech.lincank.info/blog/2015/08/31/setup-your-ghost</id>
+    <content type="html"><![CDATA[<p>just a test for me</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[create zip file on the fly with rubyzip]]></title>
