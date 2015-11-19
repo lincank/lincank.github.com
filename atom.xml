@@ -4,7 +4,7 @@
   <title><![CDATA[Guimin's Blog]]></title>
   <link href="http://tech.lincank.info/atom.xml" rel="self"/>
   <link href="http://tech.lincank.info/"/>
-  <updated>2015-11-19T18:12:36+08:00</updated>
+  <updated>2015-11-19T18:19:05+08:00</updated>
   <id>http://tech.lincank.info/</id>
   <author>
     <name><![CDATA[Guimin Lin/林桂民]]></name>
@@ -80,9 +80,18 @@ PING baidu.com : 56 data bytes
 
 <p>之后<code>/etc/init.d/network restart</code>重启网络生效。</p>
 
-<p>这时通过ssh root@192.168.56.12登陆虚拟机。</p>
+<p>这时通过<code>ssh root@192.168.56.12</code>登陆虚拟机。</p>
 
 <p>在浏览器里也应该可以通过<code>http://192.168.56.12</code>打开路由配置界面</p>
+
+<h3>Reference</h3>
+
+<ul>
+<li><a href="https://gist.github.com/wacko/5577187">SSH between Mac OS X host and Virtual Box guest</a></li>
+<li><a href="http://ediy.com.my/index.php/blog/item/31-openwrt-in-virtualbox">OpenWRT in VirtualBox</a></li>
+<li><a href="http://hoverbear.org/2014/11/23/openwrt-in-virtualbox/">OpenWRT in Virtualbox</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
