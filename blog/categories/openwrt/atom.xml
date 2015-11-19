@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: OpenWRT | Guimin's Blog]]></title>
+  <link href="http://tech.lincank.info/blog/categories/openwrt/atom.xml" rel="self"/>
+  <link href="http://tech.lincank.info/"/>
+  <updated>2015-11-19T18:12:36+08:00</updated>
+  <id>http://tech.lincank.info/</id>
+  <author>
+    <name><![CDATA[Guimin Lin/林桂民]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OpenWRT Running in VirtualBox]]></title>
+    <link href="http://tech.lincank.info/blog/2015/11/19/openwrt-running-in-virtualbox/"/>
+    <updated>2015-11-19T18:07:00+08:00</updated>
+    <id>http://tech.lincank.info/blog/2015/11/19/openwrt-running-in-virtualbox</id>
+    <content type="html"><![CDATA[<h1>在VirtualBox里运行OpenWRT</h1>
+
+<p>在OpenWRT编译的时候，要选<code>vdi</code>格式输出，这样直接就有了VirtualBox的镜像了。</p>
+
+<p>先在VBox里添加网络：
+VirtualBox > Settings > Network > Add</p>
+
+<p>完成后有个叫<code>vboxnet0</code>的网络，IP类似<code>192.168.56.1</code>。</p>
+
+<p>然后在VirtualBox里新建，选Linux 32bit。然后disk选择那个vdi文件。</p>
+
+<!-- more -->
+
+
+<p>最重要的添加两个网上，一个用来上网，一个用来跟本地机器联局域网。网卡都选<code>PCnet-PCI II</code>，类型分别选<code>NAT</code>和<code>Host-only</code>，局域网选之前创建的<code>vboxnet0</code>。</p>
+
+<h2>上网</h2>
+
+<p>启动完要按下回车才能看到提示符。一开始是没有网络的，先修改下root密码：</p>
+
+<pre><code>passwd 
+</code></pre>
+
+<p>在<code>/etc/config/network</code>把<code>wan</code>部分改成像以下的：</p>
+
+<pre><code>config interface 'wan'
+    option ifname 'eth0'
+    option proto 'dhcp'
+</code></pre>
+
+<p>之后<code>/etc/init.d/network restart</code>重启网络生效。</p>
+
+<p> 之后应该就可以上网了， <code>ping 114.114.114.114</code>， 现在没有配DNS，还不能用域名来PING。</p>
+
+<p> 把/etc/resolv.conf改成以下内容：</p>
+
+<pre><code>    search lan
+    nameserver 114.114.114.114
+</code></pre>
+
+<p>用<code>ping baidu.com</code>试下：</p>
+
+<pre><code>root@OpenWrt:~# ping baidu.com
+PING baidu.com : 56 data bytes
+64 bytes from 180.149.132.47: seq=0 ttl=63 time=42.094 ms
+64 bytes from 180.149.132.47: seq=1 ttl=63 time=40.834 ms
+64 bytes from 180.149.132.47: seq=2 ttl=63 time=41.735 ms
+</code></pre>
+
+<h2>本地局域网</h2>
+
+<p>修改<code>/etc/config/network</code>里的<code>wan</code>部分：</p>
+
+<pre><code>config interface 'lan'
+    option ifname 'eth1'
+    option proto 'static'
+    option netmask '255.255.255.0'
+    option ipaddr '192.168.56.12'
+</code></pre>
+
+<p>之后<code>/etc/init.d/network restart</code>重启网络生效。</p>
+
+<p>这时通过ssh root@192.168.56.12登陆虚拟机。</p>
+
+<p>在浏览器里也应该可以通过<code>http://192.168.56.12</code>打开路由配置界面</p>
+]]></content>
+  </entry>
+  
+</feed>

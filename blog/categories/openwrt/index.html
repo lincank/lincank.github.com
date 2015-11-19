@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Guimin's Blog</title>
+  <title>Category: OpenWRT - Guimin's Blog</title>
   <meta name="author" content="Guimin Lin/林桂民">
 
   
-  <meta name="description" content="在VirtualBox里运行OpenWRT 在OpenWRT编译的时候，要选vdi格式输出，这样直接就有了VirtualBox的镜像了。 先在VBox里添加网络：
-VirtualBox > Settings > Network > Add 完成后有个叫vboxnet0的网络，IP类似192.168 &hellip;">
+  <meta name="description" content="Category: OpenWRT">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ VirtualBox > Settings > Network > Add 完成后有个叫vboxnet0的网络，IP�
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://tech.lincank.info">
+  <link rel="canonical" href="http://tech.lincank.infoblog/categories/openwrt">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,210 +78,40 @@ VirtualBox > Settings > Network > Add 完成后有个叫vboxnet0的网络，IP�
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/11/19/openwrt-running-in-virtualbox/">OpenWRT Running in VirtualBox</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-11-19T18:07:00+08:00" pubdate data-updated="true">Nov 19<span>th</span>, 2015</time>
-        
-         | <a href="/blog/2015/11/19/openwrt-running-in-virtualbox/#disqus_thread">Comments</a>
-        
-      </p>
+    <h1 class="entry-title">Category: OpenWRT</h1>
     
   </header>
+  
+  <div id="blog-archives" class="category">
 
 
-  <div class="entry-content"><h1>在VirtualBox里运行OpenWRT</h1>
 
-<p>在OpenWRT编译的时候，要选<code>vdi</code>格式输出，这样直接就有了VirtualBox的镜像了。</p>
+  
+  <h2>2015</h2>
 
-<p>先在VBox里添加网络：
-VirtualBox > Settings > Network > Add</p>
+<article>
+  
+<h1><a href="/blog/2015/11/19/openwrt-running-in-virtualbox/">OpenWRT Running in VirtualBox</a></h1>
+<time datetime="2015-11-19T18:07:00+08:00" pubdate><span class='month'>Nov</span> <span class='day'>19</span> <span class='year'>2015</span></time>
 
-<p>完成后有个叫<code>vboxnet0</code>的网络，IP类似<code>192.168.56.1</code>。</p>
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/openwrt/'>OpenWRT</a></span>
+</footer>
 
-<p>然后在VirtualBox里新建，选Linux 32bit。然后disk选择那个vdi文件。</p>
+
+</article>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/11/19/openwrt-running-in-virtualbox/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/08/create-zip-file-on-the-fly-with-rubyzip/">Create Zip File on the Fly With Rubyzip</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
 
   
-
-
-<time datetime="2013-04-08T23:13:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/04/08/create-zip-file-on-the-fly-with-rubyzip/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I tries to create zip file with multiple files in it, on the fly of course. I refered to <a href="http://info.michael-simons.eu/2008/01/21/using-rubyzip-to-create-zip-files-on-the-fly/">this post</a>, but it does not work for me. I search and try for hours, and figure out one solution.</p>
+</article>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/04/08/create-zip-file-on-the-fly-with-rubyzip/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/28/tomcat-no-class-error/">Tomcat No Class Error</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-28T11:37:00+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/04/28/tomcat-no-class-error/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you have the same problem in deploying your webapp with ant, in Tomcat 7. Then copy the following jars to your lib directory of ant:</p>
-
-<pre><code>catalina-ant.jar
-tomcat-coyote.jar
-tomcat-util.jar
-tomcat-juli.jar
-</code></pre>
-
-<p>That&#8217;s it! You will be fine:)</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/19/djangokai-fa-ce-shi/">Django开发测试</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-19T18:06:00+08:00" pubdate data-updated="true">Apr 19<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/04/19/djangokai-fa-ce-shi/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>测试的重要性不再赘述, 我们的系统每个模块都要有单元测试. 另一方面要确保自己写的测试代码尽可能地简单有效, 能达到目的就好. 要确保自己写的测试代码没有Bug!</p>
-
-<h2>Python单元测试框架</h2>
-
-<p><a href="http://pyunit.sourceforge.net/pyunit_cn.html">Python单元测试框架</a>: 简称为PyUnit, 是JUnit的Python版本. 我们的项目代码请按照这个测试框架编写.</p>
-
-<h2>浏览器脚本测试</h2>
-
-<p><a href="https://addons.mozilla.org/en-US/firefox/addon/imacros-for-firefox/">iMacros</a>: 有FireFox版及Chrome版, 可以记录浏览器里的鼠标及键盘行为, 在浏览器实现自动测试.</p>
-
-<h2>JavaScript调试</h2>
-
-<ul>
-<li>FireFox: FireBug</li>
-<li>Chrome: 内置有调试器</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -312,7 +141,7 @@ tomcat-juli.jar
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -340,6 +169,7 @@ tomcat-juli.jar
 
   
 </aside>
+
 
     </div>
   </div>

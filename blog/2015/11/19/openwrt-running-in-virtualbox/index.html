@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Guimin's Blog</title>
+  <title>OpenWRT Running in VirtualBox - Guimin's Blog</title>
   <meta name="author" content="Guimin Lin/林桂民">
 
   
@@ -19,7 +19,7 @@ VirtualBox > Settings > Network > Add 完成后有个叫vboxnet0的网络，IP�
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://tech.lincank.info">
+  <link rel="canonical" href="http://tech.lincank.info/blog/2015/11/19/openwrt-running-in-virtualbox">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,15 +79,12 @@ VirtualBox > Settings > Network > Add 完成后有个叫vboxnet0的网络，IP�
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/11/19/openwrt-running-in-virtualbox/">OpenWRT Running in VirtualBox</a></h1>
+      <h1 class="entry-title">OpenWRT Running in VirtualBox</h1>
     
     
       <p class="meta">
@@ -105,14 +102,14 @@ VirtualBox > Settings > Network > Add 完成后有个叫vboxnet0的网络，IP�
 
 <time datetime="2015-11-19T18:07:00+08:00" pubdate data-updated="true">Nov 19<span>th</span>, 2015</time>
         
-         | <a href="/blog/2015/11/19/openwrt-running-in-virtualbox/#disqus_thread">Comments</a>
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h1>在VirtualBox里运行OpenWRT</h1>
+<div class="entry-content"><h1>在VirtualBox里运行OpenWRT</h1>
 
 <p>在OpenWRT编译的时候，要选<code>vdi</code>格式输出，这样直接就有了VirtualBox的镜像了。</p>
 
@@ -123,116 +120,71 @@ VirtualBox > Settings > Network > Add</p>
 
 <p>然后在VirtualBox里新建，选Linux 32bit。然后disk选择那个vdi文件。</p>
 
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/11/19/openwrt-running-in-virtualbox/">Read on &rarr;</a>
-    </footer>
-  
+<!-- more -->
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/08/create-zip-file-on-the-fly-with-rubyzip/">Create Zip File on the Fly With Rubyzip</a></h1>
-    
-    
-      <p class="meta">
-        
+<p>最重要的添加两个网上，一个用来上网，一个用来跟本地机器联局域网。网卡都选<code>PCnet-PCI II</code>，类型分别选<code>NAT</code>和<code>Host-only</code>，局域网选之前创建的<code>vboxnet0</code>。</p>
 
+<h2>上网</h2>
 
+<p>启动完要按下回车才能看到提示符。一开始是没有网络的，先修改下root密码：</p>
 
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-08T23:13:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/04/08/create-zip-file-on-the-fly-with-rubyzip/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I tries to create zip file with multiple files in it, on the fly of course. I refered to <a href="http://info.michael-simons.eu/2008/01/21/using-rubyzip-to-create-zip-files-on-the-fly/">this post</a>, but it does not work for me. I search and try for hours, and figure out one solution.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/04/08/create-zip-file-on-the-fly-with-rubyzip/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/28/tomcat-no-class-error/">Tomcat No Class Error</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-28T11:37:00+08:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/04/28/tomcat-no-class-error/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you have the same problem in deploying your webapp with ant, in Tomcat 7. Then copy the following jars to your lib directory of ant:</p>
-
-<pre><code>catalina-ant.jar
-tomcat-coyote.jar
-tomcat-util.jar
-tomcat-juli.jar
+<pre><code>passwd 
 </code></pre>
 
-<p>That&#8217;s it! You will be fine:)</p>
+<p>在<code>/etc/config/network</code>把<code>wan</code>部分改成像以下的：</p>
+
+<pre><code>config interface 'wan'
+    option ifname 'eth0'
+    option proto 'dhcp'
+</code></pre>
+
+<p>之后<code>/etc/init.d/network restart</code>重启网络生效。</p>
+
+<p> 之后应该就可以上网了， <code>ping 114.114.114.114</code>， 现在没有配DNS，还不能用域名来PING。</p>
+
+<p> 把/etc/resolv.conf改成以下内容：</p>
+
+<pre><code>    search lan
+    nameserver 114.114.114.114
+</code></pre>
+
+<p>用<code>ping baidu.com</code>试下：</p>
+
+<pre><code>root@OpenWrt:~# ping baidu.com
+PING baidu.com : 56 data bytes
+64 bytes from 180.149.132.47: seq=0 ttl=63 time=42.094 ms
+64 bytes from 180.149.132.47: seq=1 ttl=63 time=40.834 ms
+64 bytes from 180.149.132.47: seq=2 ttl=63 time=41.735 ms
+</code></pre>
+
+<h2>本地局域网</h2>
+
+<p>修改<code>/etc/config/network</code>里的<code>wan</code>部分：</p>
+
+<pre><code>config interface 'lan'
+    option ifname 'eth1'
+    option proto 'static'
+    option netmask '255.255.255.0'
+    option ipaddr '192.168.56.12'
+</code></pre>
+
+<p>之后<code>/etc/init.d/network restart</code>重启网络生效。</p>
+
+<p>这时通过ssh root@192.168.56.12登陆虚拟机。</p>
+
+<p>在浏览器里也应该可以通过<code>http://192.168.56.12</code>打开路由配置界面</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/19/djangokai-fa-ce-shi/">Django开发测试</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Guimin Lin/林桂民</span></span>
+
+      
 
 
 
@@ -244,45 +196,48 @@ tomcat-juli.jar
   
 
 
-<time datetime="2012-04-19T18:06:00+08:00" pubdate data-updated="true">Apr 19<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/04/19/djangokai-fa-ce-shi/#disqus_thread">Comments</a>
-        
-      </p>
+<time datetime="2015-11-19T18:07:00+08:00" pubdate data-updated="true">Nov 19<span>th</span>, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/openwrt/'>OpenWRT</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tech.lincank.info/blog/2015/11/19/openwrt-running-in-virtualbox/" data-via="lincank" data-counturl="http://tech.lincank.info/blog/2015/11/19/openwrt-running-in-virtualbox/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/08/create-zip-file-on-the-fly-with-rubyzip/" title="Previous Post: create zip file on the fly with rubyzip">&laquo; create zip file on the fly with rubyzip</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-  <div class="entry-content"><p>测试的重要性不再赘述, 我们的系统每个模块都要有单元测试. 另一方面要确保自己写的测试代码尽可能地简单有效, 能达到目的就好. 要确保自己写的测试代码没有Bug!</p>
-
-<h2>Python单元测试框架</h2>
-
-<p><a href="http://pyunit.sourceforge.net/pyunit_cn.html">Python单元测试框架</a>: 简称为PyUnit, 是JUnit的Python版本. 我们的项目代码请按照这个测试框架编写.</p>
-
-<h2>浏览器脚本测试</h2>
-
-<p><a href="https://addons.mozilla.org/en-US/firefox/addon/imacros-for-firefox/">iMacros</a>: 有FireFox版及Chrome版, 可以记录浏览器里的鼠标及键盘行为, 在浏览器实现自动测试.</p>
-
-<h2>JavaScript调试</h2>
-
-<ul>
-<li>FireFox: FireBug</li>
-<li>Chrome: 内置有调试器</li>
-</ul>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -312,7 +267,7 @@ tomcat-juli.jar
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -341,6 +296,7 @@ tomcat-juli.jar
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -355,7 +311,10 @@ tomcat-juli.jar
       var disqus_shortname = 'cktechblog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tech.lincank.info/blog/2015/11/19/openwrt-running-in-virtualbox/';
+        var disqus_url = 'http://tech.lincank.info/blog/2015/11/19/openwrt-running-in-virtualbox/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
