@@ -1,3 +1,18 @@
+## 用法
+```shell
+bundle exec rake new_post\["something new"\]
+
+# edit as you like, and then
+rake generate
+rake deploy # now your github page has updated!
+
+# update source
+git add .
+git commit -m 'your message'
+git push origin source
+
+```
+
 ## What is Octopress?
 
 Octopress is [Jekyll](https://github.com/mojombo/jekyll) blogging at its finest.

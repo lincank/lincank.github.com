@@ -62,6 +62,12 @@ VirtualBox > Settings > Network > Add
 之后`/etc/init.d/network restart`重启网络生效。
 
 
-这时通过ssh root@192.168.56.12登陆虚拟机。
+这时通过`ssh root@192.168.56.12`登陆虚拟机。
 
 在浏览器里也应该可以通过`http://192.168.56.12`打开路由配置界面
+
+
+###Reference
+* [SSH between Mac OS X host and Virtual Box guest](https://gist.github.com/wacko/5577187)
+* [OpenWRT in VirtualBox](http://ediy.com.my/index.php/blog/item/31-openwrt-in-virtualbox)
+* [OpenWRT in Virtualbox](http://hoverbear.org/2014/11/23/openwrt-in-virtualbox/)
