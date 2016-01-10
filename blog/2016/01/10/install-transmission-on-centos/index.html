@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Django开发测试 - Guimin's Blog</title>
+  <title>Centos安装Transimission及远程管理 - Guimin's Blog</title>
   <meta name="author" content="Guimin Lin/林桂民">
 
   
-  <meta name="description" content="测试的重要性不再赘述, 我们的系统每个模块都要有单元测试. 另一方面要确保自己写的测试代码尽可能地简单有效, 能达到目的就好. 要确保自己写的测试代码没有Bug! Python单元测试框架 Python单元测试框架: 简称为PyUnit, 是JUnit的Python版本. &hellip;">
+  <meta name="description" content="服务器 yum install epel-release -y
+yum -y install transmission transmission-daemon service transmission-daemon start 浏览器打开http://server_ip:9091，应该看到403 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://tech.lincank.info/blog/2012/04/19/djangokai-fa-ce-shi">
+  <link rel="canonical" href="http://tech.lincank.info/blog/2016/01/10/install-transmission-on-centos">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -83,7 +84,7 @@
   
   <header>
     
-      <h1 class="entry-title">Django开发测试</h1>
+      <h1 class="entry-title">Centos安装Transimission及远程管理</h1>
     
     
       <p class="meta">
@@ -99,7 +100,7 @@
   
 
 
-<time datetime="2012-04-19T18:06:00+08:00" pubdate data-updated="true">Apr 19<span>th</span>, 2012</time>
+<time datetime="2016-01-10T17:55:00+08:00" pubdate data-updated="true">Jan 10<span>th</span>, 2016</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -108,23 +109,65 @@
   </header>
 
 
-<div class="entry-content"><p>测试的重要性不再赘述, 我们的系统每个模块都要有单元测试. 另一方面要确保自己写的测试代码尽可能地简单有效, 能达到目的就好. 要确保自己写的测试代码没有Bug!</p>
+<div class="entry-content"><h3>服务器</h3>
 
-<h2>Python单元测试框架</h2>
+<pre><code>yum install epel-release -y
+yum -y install transmission transmission-daemon
 
-<p><a href="http://pyunit.sourceforge.net/pyunit_cn.html">Python单元测试框架</a>: 简称为PyUnit, 是JUnit的Python版本. 我们的项目代码请按照这个测试框架编写.</p>
+service transmission-daemon start
+</code></pre>
 
-<h2>浏览器脚本测试</h2>
+<p>浏览器打开<code>http://server_ip:9091</code>，应该看到403 Forbidden，就是已经安排并成功启动了，但还没有权限。</p>
 
-<p><a href="https://addons.mozilla.org/en-US/firefox/addon/imacros-for-firefox/">iMacros</a>: 有FireFox版及Chrome版, 可以记录浏览器里的鼠标及键盘行为, 在浏览器实现自动测试.</p>
+<!-- more -->
 
-<h2>JavaScript调试</h2>
 
-<ul>
-<li>FireFox: FireBug</li>
-<li>Chrome: 内置有调试器</li>
-</ul>
+<p><img class="center" src="/images/transmission_forbidden.png" title="" ></p>
 
+<p>这时要修改一下配置文件</p>
+
+<pre><code>#=&gt; service transmission-daemon stop
+#=&gt; find / -name settings.json
+#=&gt; /var/lib/transmission/.config/transmission-daemon/settings.json
+</code></pre>
+
+<p>修改这个文件里的几个值：</p>
+
+<pre><code>"rpc-authentication-required": true, # 改为true要求验证，否则所有人都可以看到
+"rpc-bind-address": "0.0.0.0",
+"rpc-enabled": true,
+"rpc-password": "xxxxx",            # 密码， 这里改完，start后它自己会把它改成哈希值，记住你自己改的密码即可。
+"rpc-username": "foo",              # 用户名
+"rpc-whitelist-enabled": false, # 这里要改为false
+
+service transmission-daemon start
+</code></pre>
+
+<p><img class="center" src="/images/transmission_admin.png" title="" ></p>
+
+<h3>本地</h3>
+
+<p>Mac上直接可以</p>
+
+<pre><code>brew install transmission
+git clone https://github.com/fagga/transmission-remote-cli.git
+
+# 创建并保存配置文件
+transmission-remote-cli -c username:password@server_ip:9091 --create-config
+
+# 完成后可以通过这样加bt文件到服务器
+transmission-remote-cli xxx.torrent
+
+# 直接在cmd里看服务器上的任务
+transmission-remote-cli
+</code></pre>
+
+<p><img class="center" src="https://github.com/fagga/transmission-remote-cli/raw/master/screenshots/screenshot-mainfull-v1.3.png" title="" ></p>
+
+<h2>Reference</h2>
+
+<p><a href="http://www.filesharingguides.com/install-transmission-torrent-client-rhel-centos-6/">Torrent Guide – Install Transmission Client to RHEL / CentOS 6
+</a></p>
 </div>
 
 
@@ -147,21 +190,15 @@
   
 
 
-<time datetime="2012-04-19T18:06:00+08:00" pubdate data-updated="true">Apr 19<span>th</span>, 2012</time>
+<time datetime="2016-01-10T17:55:00+08:00" pubdate data-updated="true">Jan 10<span>th</span>, 2016</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/django/'>Django</a>, <a class='category' href='/blog/categories/python/'>Python</a>, <a class='category' href='/blog/categories/unittest/'>Unittest</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tech.lincank.info/blog/2012/04/19/djangokai-fa-ce-shi/" data-via="lincank" data-counturl="http://tech.lincank.info/blog/2012/04/19/djangokai-fa-ce-shi/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tech.lincank.info/blog/2016/01/10/install-transmission-on-centos/" data-via="lincank" data-counturl="http://tech.lincank.info/blog/2016/01/10/install-transmission-on-centos/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -174,8 +211,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2015/11/19/openwrt-running-in-virtualbox/" title="Previous Post: OpenWRT Running in VirtualBox">&laquo; OpenWRT Running in VirtualBox</a>
       
-        <a class="basic-alignment right" href="/blog/2012/04/28/tomcat-no-class-error/" title="Next Post: tomcat No Class Error">tomcat No Class Error &raquo;</a>
       
     </p>
   </footer>
@@ -267,8 +304,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://tech.lincank.info/blog/2012/04/19/djangokai-fa-ce-shi/';
-        var disqus_url = 'http://tech.lincank.info/blog/2012/04/19/djangokai-fa-ce-shi/';
+        var disqus_identifier = 'http://tech.lincank.info/blog/2016/01/10/install-transmission-on-centos/';
+        var disqus_url = 'http://tech.lincank.info/blog/2016/01/10/install-transmission-on-centos/';
         var disqus_script = 'embed.js';
       
     (function () {

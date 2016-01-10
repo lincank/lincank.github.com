@@ -4,7 +4,7 @@
   <title><![CDATA[Guimin's Blog]]></title>
   <link href="http://tech.lincank.info/atom.xml" rel="self"/>
   <link href="http://tech.lincank.info/"/>
-  <updated>2015-11-19T18:19:05+08:00</updated>
+  <updated>2016-01-10T18:22:57+08:00</updated>
   <id>http://tech.lincank.info/</id>
   <author>
     <name><![CDATA[Guimin Lin/林桂民]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Centos安装Transimission及远程管理]]></title>
+    <link href="http://tech.lincank.info/blog/2016/01/10/install-transmission-on-centos/"/>
+    <updated>2016-01-10T17:55:00+08:00</updated>
+    <id>http://tech.lincank.info/blog/2016/01/10/install-transmission-on-centos</id>
+    <content type="html"><![CDATA[<h3>服务器</h3>
+
+<pre><code>yum install epel-release -y
+yum -y install transmission transmission-daemon
+
+service transmission-daemon start
+</code></pre>
+
+<p>浏览器打开<code>http://server_ip:9091</code>，应该看到403 Forbidden，就是已经安排并成功启动了，但还没有权限。</p>
+
+<!-- more -->
+
+
+<p><img class="center" src="http://tech.lincank.info/images/transmission_forbidden.png" title="" ></p>
+
+<p>这时要修改一下配置文件</p>
+
+<pre><code>#=&gt; service transmission-daemon stop
+#=&gt; find / -name settings.json
+#=&gt; /var/lib/transmission/.config/transmission-daemon/settings.json
+</code></pre>
+
+<p>修改这个文件里的几个值：</p>
+
+<pre><code>"rpc-authentication-required": true, # 改为true要求验证，否则所有人都可以看到
+"rpc-bind-address": "0.0.0.0",
+"rpc-enabled": true,
+"rpc-password": "xxxxx",            # 密码， 这里改完，start后它自己会把它改成哈希值，记住你自己改的密码即可。
+"rpc-username": "foo",              # 用户名
+"rpc-whitelist-enabled": false, # 这里要改为false
+
+service transmission-daemon start
+</code></pre>
+
+<p><img class="center" src="http://tech.lincank.info/images/transmission_admin.png" title="" ></p>
+
+<h3>本地</h3>
+
+<p>Mac上直接可以</p>
+
+<pre><code>brew install transmission
+git clone https://github.com/fagga/transmission-remote-cli.git
+
+# 创建并保存配置文件
+transmission-remote-cli -c username:password@server_ip:9091 --create-config
+
+# 完成后可以通过这样加bt文件到服务器
+transmission-remote-cli xxx.torrent
+
+# 直接在cmd里看服务器上的任务
+transmission-remote-cli
+</code></pre>
+
+<p><img class="center" src="https://github.com/fagga/transmission-remote-cli/raw/master/screenshots/screenshot-mainfull-v1.3.png" title="" ></p>
+
+<h2>Reference</h2>
+
+<p><a href="http://www.filesharingguides.com/install-transmission-torrent-client-rhel-centos-6/">Torrent Guide – Install Transmission Client to RHEL / CentOS 6
+</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OpenWRT Running in VirtualBox]]></title>
